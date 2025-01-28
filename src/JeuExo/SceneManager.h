@@ -1,18 +1,18 @@
 #pragma once
-#include "Scene.h"
-#include <iostream>
+#include <vector>
+#include "Scene.h" // Inclure la définition de Scene
 #include <SFML/Graphics.hpp>
 
-class SceneManager
-{
-	int NumberOfScene;
-	int CurrentScene;
-	std::vector<Scene*> Scene;
-public : 
-	SceneManager();
+class SceneManager {
+private:
+    int NumberOfscene;
+    int CurrentScene; // Index de la scène active
+    std::vector<Scene*> Scenes; // Liste des scènes
 
-	void* GetCurrentScene();
+public:
+    SceneManager();
 
-	void DrawCurrentScene();
+    Scene* GetCurrentScene(); // Retourne la scène actuelle
+    void DrawCurrentScene(sf::RenderWindow& window); // Dessine la scène actuelle
+    void AddScene(Scene* scene); // Ajoute une scène
 };
-

@@ -1,40 +1,21 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Entity.h"
+#include <iostream>
 
 
-template <typename T>
- inline T* Scene::Add() {
-	 T* pushed = new T;
-	 Entities.push_back(pushed);
-	 return pushed;
-}
-
-template <typename T>
-  T* Scene::Gets() {
-	 std::vector<T*> Got;
-	 /*for (Entity* ent : Entities) {
-		 if (T* found == dynamic_cast<T*>(Entity) { 
-			 Got.push_back(ent); 
-		 }
-	 }
-	 return found;*/
-}
-
-template <typename T>
-const T& Scene::RemoveType() {
-	for (int i = 0; i < Entities.size(); i++) {
-		delete Entities[i];
+void Scene::Update(float dt) {
+	// Exemple de logique pour mettre à jour les entités
+	for (auto& ent : Entities) {
+		ent->Update(0); // Passez le delta temps
+		player.Update(dt);
 	}
 }
 
-void Scene::Update() {
-	player.Spawn();
-}
-
-void Scene::draw(sf::RenderWindow Window)  {
-	Update();
-	Player* p = Add<Player>();
-	player.Draw(Window);
-	for (Entity* ent : Entities) Window.draw(*ent);
+void Scene::draw(sf::RenderWindow& window) {
+	//player.Draw(window); // Dessinez le joueur principal séparément
+	for (const auto& ent : Entities) {
+		window.draw(*ent);
+		player.Draw(window);
+	}
 }

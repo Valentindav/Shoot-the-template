@@ -3,8 +3,8 @@
 #include <iostream>
 
 Player::Player() {
-	spawnX = 425;
-	spawnY = 725;
+	spawnX = x = 425;
+	spawnY = y = 725;
 	const std::string& texturePath = "..\\..\\..\\res\\kenney_space-shooter-extension\\PNG\\Sprites\\Ships\\spaceShips_003.png";
 	if (!texture.loadFromFile(texturePath)) {
 		throw std::runtime_error("Erreur de chargement de la texture !");

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "SceneManager.h"
 #include "Player.h"
 
 class GameManager
@@ -7,6 +8,7 @@ class GameManager
 	 //sf::RenderWindow window;
 	 Player player;
 	 static GameManager* Minstance;
+	 SceneManager sceneManager;
 public : 
 	static GameManager* Getinstance();
 	void Init();
